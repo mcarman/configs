@@ -1,0 +1,61 @@
+# Config relating to the Lazygit UI
+
+gui:
+  # One of 'auto' (default) | 'en' | 'zh-CN' | 'zh-TW' | 'pl' | 'nl' | 'ja' | 'ko' | 'ru'
+  language: 'en'
+
+  # If true, capture mouse events.
+  # When mouse events are captured, it's a little harder to select text: e.g. requiring you to hold the option key when on macOS.
+  mouseEvents: true
+
+  # Nerd fonts version to use.
+  # One of: '2' | '3' | empty string (default)
+  # If empty, do not show icons.
+  nerdFontsVersion: "3"
+
+  # If true, show the bottom line that contains keybinding info and useful buttons. If false, this line will be hidden except to display a loader for an in-progress action.
+  showBottomLine: false
+  # If true, show the command log
+  showCommandLog: false
+
+  # Window border style.
+  # One of 'rounded' (default) | 'single' | 'double' | 'hidden'
+  border: "rounded"
+
+# Theme config catppuccin mocha
+theme:
+  lazygit --use-config-file="$XDG_CONFIG_HOME/lazygit/themes/themes-mergable/mocha.yml"
+
+
+#  activeBorderColor:
+#    - '#89b4fa'
+#    - bold
+#  inactiveBorderColor:
+#    - '#a6adc8'
+#  optionsTextColor:
+#    - '#89b4fa'
+#  selectedLineBgColor:
+#    - '#313244'
+#  cherryPickedCommitBgColor:
+#    - '#45475a'
+#  cherryPickedCommitFgColor:
+#    - '#89b4fa'
+#  unstagedChangesColor:
+#    - '#f38ba8'
+#  defaultFgColor:
+#    - '#cdd6f4'
+#  searchingActiveBorderColor:
+#    - '#f9e2af'
+#  authorColors:
+#    '*': '#b4befe'
+
+# Config relating to git
+git:
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
+  pagers:
+    - # Value of the --color arg in the git diff command. Some pagers want this to be set to 'always' and some want it set to 'never'
+      colorArg: always
+      # e.g.
+      # diff-so-fancy
+      # ydiff -p cat -s --wrap --width={{columnWidth}}
+      pager: delta --dark --paging=never

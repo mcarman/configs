@@ -1,0 +1,11 @@
+{
+  "theme": "dark",
+  "editor": {
+    "tab_size": 2,
+    "relative_line_numbers": true,
+    "auto_save_interval_secs": 60
+  },
+  "file_explorer": {
+    "show_hidden": true
+  }
+}
