@@ -1,11 +1,13 @@
 
+autoload promptinit ; promptinit
+
 NEWLINE=$'\n'
 PROMPT="${NEWLINE}%K{#2E3440}%F{#E5E9F0}$(date +%_I:%M%P) \
   %K{#3b4252}%F{#ECEFF4} %n %K{#4c566a} %~ %f%k%F{#4c566a}" # nord theme
 
 RPROMPT="%K{#2E3440}%F{#E5E9F0}$(date +%_I:%M%P)%K{#2E3440}%F{#2E3440}"
 
-#RPROMPT="%K{#2E3440}%F{#4c566a}$(date +%_I:%M%P)%F{#4c566a}"
+#RPROMPT="%K{#2E3440}%F{#4c566a}$(date +%_I:%M%P)%F{#4c566a}"
 
 # PROMPT="${NEWLINE}%K{#32302f}%F{#d5c4a1} $0 %K{#3c3836}%F{#d5c4a1} \
 # %n %K{#504945} %~ %f%k ❯ " # warmer theme

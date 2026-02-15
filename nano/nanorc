@@ -1,0 +1,66 @@
+## show line numbers
+set linenumbers
+
+## enable autindent
+set autoindent
+
+## set tab size and convert to spaces
+set tabsize 2
+set tabstospaces
+
+## mouse
+set mouse
+
+## set history file
+set historylog
+
+## break if lines are too long
+set breaklonglines
+set atblanks
+
+## use bold, not reverse highlighting
+set boldtext
+
+## Information settings
+# set indicator
+# set stateflags
+
+## Speller
+set speller spell
+
+## Color Syntax Highlighting
+
+include "/usr/share/nano/*.nanorc"
+
+## nano
+# include "syntax/nanorc.nanorc"
+
+## Dockerfile
+#include "syntax/Dockerfile.nanorc"
+
+## conf file
+#include "syntax/conf.nanorc"
+
+## python
+#include "syntax/python.nanorc"
+
+## js
+#include "syntax/js.nanorc"
+
+## json
+#include "syntax/json.nanorc"
+
+## xml
+#include "syntax/xml.nanorc"
+
+## yaml
+#include "syntax/yaml.nanorc"
+
+## nmap
+#include "syntax/nmap.nanorc"
+
+## REST
+#include "syntax/reST.nanorc"
+
+## html
+#include "syntax/html.nanorc"

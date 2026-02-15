@@ -1,0 +1,80 @@
+# git ignore file for configs
+#
+*.Identifier
+# Created by https://www.toptal.com/developers/gitignore/api/zsh
+# Edit at https://www.toptal.com/developers/gitignore?templates=zsh
+
+### Zsh ###
+# Zsh compiled script + zrecompile backup
+*.zwc
+*.zwc.old
+
+# Zsh completion-optimization dumpfile
+*zcompdump*
+
+# Zsh history
+.zhistfile
+
+# Zsh sessions
+.zsh_sessions
+
+# Zsh zcalc history
+.zcalc_history
+
+robbyrussell/oh-my-zsh/plugins/per-directory-history plugin's files
+# (when set-up to store the history in the local directory)
+.directory_history
+
+# MichaelAquilina/zsh-autoswitch-virtualenv plugin's files
+# (for Zsh plugins using Python)
+.venv/
+
+# Zunit tests' output
+/tests/_output/*
+!/tests/_output/.gitkeep
+
+# End of https://www.toptal.com/developers/gitignore/api/zsh
+#
+# Theme files, ignore
+*.tmTheme
+*.xcolors
+*.Xresources
+*.dircolors
+delta/
+
+
+# Ignore syntax files.
+*.tmLanguages
+
+
+# ignore env
+.env.local
+.env.*.local
+
+# token info in gh
+hosts.yml
+
+# ignore telemetry directory and all subdirectories
+**/telemetry/
+
+**/lazygit/themes/
+**/nvim.bak
+**/projects.yazi/
+*.yazi
+*.bak
+*.bak1
+**/fxf-tab/
+**/zsh-autosuggestions/
+**/zsh-autoswitch-virtualenv/
+**/zsh-completions/
+**/zsh-history-substring-search/
+**/zsh-syntax-highlighting/
+**/zsh-z/
+delta_completions.zsh
+**/prompt/
+**/slimline/
+**/temeraf-zsh/
+**/zsh-modern-theme/
+88/old-configs/
+**/tmux/plugins/
+

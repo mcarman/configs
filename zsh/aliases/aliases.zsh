@@ -4,9 +4,6 @@
 # | Network |
 # +---------+
 
-# nmap Network
-alias mapn="nmap $1/24"
-
 ## Website info
 alias websiteget="wget --random-wait -r -p -e robots=off -U mozilla"
 
@@ -80,9 +77,7 @@ sbs(){ du -b --max-depth 1 | sort -nr | perl -pe 's{([0-9]+)}{sprintf "%.1f%s", 
 ## list open files
 alias listen="lsof -P -i -n"
 
-
 alias volume="amixer get Master | sed '1,4 d' | cut -d [ -f 2 | cut -d ] -f 1"
-
 
 # +-----+
 # | X11 |
@@ -131,7 +126,7 @@ mcd() {
 # | wget |
 # +------+
 
-alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"''
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 
 # +----+
 # | cp |
@@ -181,7 +176,7 @@ alias calc="noglob calcul"
 # | bat |
 # +-----+
 
-alias batl='bat --paging=never -l log'
+# alias batl='bat --paging=never -l log'
 
 # +-------+
 # | fonts |
@@ -216,6 +211,7 @@ alias vi='nvim'
 # | Git |
 # +-----+
 
+alias lgit="lazygit"
 alias gs='git status'
 alias gss='git status -s'
 alias ga='git add'
@@ -227,7 +223,7 @@ alias gpofn='git push origin --force-with-lease --no-verify'
 alias gpt='git push --tag'
 alias gtd='git tag --delete'
 alias gtdr='git tag --delete origin'
-alias grb='git branch -r'                                                                           # display remote branch
+alias grb='git branch -r'    # display remote branch
 alias gplo='git pull origin'
 alias gb='git branch '
 alias gc='git commit'
@@ -240,9 +236,10 @@ alias grs='git remote show'
 alias glol='git log --graph --abbrev-commit --oneline --decorate'
 alias gclean="git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d" # Delete local branch merged with master
 alias gblog="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:red)%(refname:short)%(color:reset) - %(color:yellow)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:blue)%(committerdate:relative)%(color:reset))'"                                                             # git log for each branches
-alias gsub="git submodule update --remote"                                                        # pull submodules
-alias gj="git-jump"                                                                               # Open in vim quickfix list files of interest (git diff, merged...)
+alias gsub="git submodule update --remote"                                                        # pull submodule
+alias gj="git-jump"
 
+# Open in vim quickfix list files of interest (git diff, merged...)
 alias dif="git diff --no-index"                                                                   # Diff two files even if not in git repo! Can add -w (don't diff whitespaces)
 
 # +------+
@@ -254,13 +251,15 @@ alias tmuxa='tmux attach -t'
 alias tmuxl='tmux list-sessions'
 alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"
 
+## Use  bat for colorization
+alias bat="batcat --color=always --style=numbers --line-range=:500"
+alias cat="bat"  # --theme-dark default --theme-light GitHub
 
 # +------+
 # | lynx |
 # +------+
 
 alias lynx='lynx -vikeys -accept_all_cookies'
-
 
 # +--------+
 # | docker |
@@ -282,12 +281,11 @@ alias dockd='docker compose down'
 alias dockceu='docker-compose run --rm -u $(id -u):$(id -g)'                    # run as the host user
 alias dockce='docker-compose run --rm'
 
-
 # +----------+
 # | Personal |
 # +----------+
 
-alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
+# alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
 
 # Folders
 alias work="$HOME/workspace"
@@ -307,6 +305,8 @@ alias ex='extract'
 # | scripts |
 # +---------+
 
+alias makescript="fc -rnl | head -1 >"
+
 # +---------+
 # |  Debug  |
 # +---------+
@@ -317,15 +317,11 @@ alias tailf="tail -f journalctl | bat --paging=never -l log"
 ## trace a call
 alias intercept="sudo strace -ff -e trace=write -e write=1,2 -p"
 
-
 #backup
 backup() { cd "$1"{,.bak}; }
 
 # checksum
 md5check() { md5sum "$1" | grep "$2";}
-
-
-alias makescript="fc -rnl | head -1 >"
 
 # Generate a random password
 alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
@@ -359,5 +355,8 @@ extract() {
          echo "'$1' is not a valid file"
      fi
 }
+
+# TMUX setup
+alias xclip="xclip >/dev/null"
 
 

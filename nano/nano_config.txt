@@ -1,0 +1,58 @@
+## show line numbers
+set linenumbers
+
+## enable autoindent
+set autoindent
+
+## set display of info
+set constantshow
+set indicator
+set minibar
+
+## set tab size and convert to spaces
+set tabsize 2
+set tabstospaces
+
+## set history file
+set historylog
+
+## sort wrap lines and break at blankspace
+set softwrap
+set atblanks
+
+
+
+## Color Syntax Highlighting 
+
+## nano
+include "$XDG_CONFIG_HOME/nano/nanorc/nanorc.nanorc"
+
+## Dockerfile
+include "$XDG_CONFIG_HOME/nano/nanorc/Dockerfile.nanorc"
+
+## conf file
+include "$XDG_CONFIG_HOME/nano/nanorc/conf.nanorc"
+
+## python
+include "$XDG_CONFIG_HOME/nano/nanorc/python.nanorc"
+
+## js
+include "$XDG_CONFIG_HOME/nano/nanorc/js.nanorc"
+
+## json
+include "$XDG_CONFIG_HOME/nano/nanorc/json.nanorc"
+
+## xml
+include "$XDG_CONFIG_HOME/nano/nanorc/xml.nanorc"
+
+## yaml
+include "$XDG_CONFIG_HOME/nano/nanorc/yaml.nanorc"
+
+## nmap
+include "$XDG_CONFIG_HOME/nano/nanorc/nmap.nanorc"
+
+## REST
+include "$XDG_CONFIG_HOME/nano/nanrc/reST.nanorc"
+
+## html
+include "$XDG_CONFIG_HOME/nano/nanrc/html.nanorc"

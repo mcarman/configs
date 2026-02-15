@@ -2,7 +2,7 @@
 
 gui:
   # One of 'auto' (default) | 'en' | 'zh-CN' | 'zh-TW' | 'pl' | 'nl' | 'ja' | 'ko' | 'ru'
-  language: 'en'
+  language: "en"
 
   # If true, capture mouse events.
   # When mouse events are captured, it's a little harder to select text: e.g. requiring you to hold the option key when on macOS.
@@ -23,9 +23,7 @@ gui:
   border: "rounded"
 
 # Theme config catppuccin mocha
-theme:
-  lazygit --use-config-file="$XDG_CONFIG_HOME/lazygit/themes/themes-mergable/mocha.yml"
-
+theme: lazygit --use-config-file="$XDG_CONFIG_HOME/lazygit/themes/themes-mergable/mocha.yml"
 
 #  activeBorderColor:
 #    - '#89b4fa'

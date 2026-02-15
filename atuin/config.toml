@@ -1,0 +1,20 @@
+# .config/atuin
+# mcarman
+# last update 202602012
+
+dialect = "us"
+search_mode = "fuzzy"
+filter_mode = "global"
+style = "full"
+invert = "true"
+
+[preview]
+strategy = "auto"
+
+[theme]
+name = "catppuccin-mocha-teal.toml"
+debug = "true"
+
+[ui]
+columns =["directory", "duration", "time", "command"]
+
