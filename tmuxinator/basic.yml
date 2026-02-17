@@ -1,0 +1,20 @@
+
+
+name: my-app
+
+# Project root directory
+root: ~/projects/my-app
+
+# Startup windows
+windows:
+  - application:
+    layout: tiled
+
+    panes:
+      – editor:
+        - nvim
+      - logs:
+        - journalctl -f
+      – shell:
+
+

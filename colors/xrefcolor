@@ -1,0 +1,339 @@
+! Color theme to be placed in ~/.Xresources file
+! Enable it at runtime with :
+! $ xrdb ~/.Xresources
+! or
+! $ < ~/.Xresources xrdb
+
+ *background: #181825
+ *foreground: #a6adc8
+ *color0:     #313244
+ *color1:     #f38ba8
+ *color2:     #a6e3a1
+ *color3:     #f9e2af
+ *color4:     #89b4fa
+ *color5:     #f5c2e7
+ *color6:     #94e2d5
+ *color7:     #a6adc8
+ *color8:     #585b70
+ *color9:     #8839ef
+ *color10:    #40a02b
+ *color11:    #df8e1d
+ *color12:    #1e66f5
+ *color13:    #ea76cb
+ *color14:    #179299
+ *color15:    #bac2de
+ *color16:    #fab387
+ *color17:    #f5e0dc
+
+# calculate thr bright colors
+# color.lightness * 0.94
+# color.chroma + 8
+# color.hue + 2
+# converted red? rgb(228, 147, 170) hsl(322deg, 89%, 77%)
+
+# Catppuccin Mocha Bright Color Palette
+typeset -A CATPPUCCIN
+CATPPUCCIN[rosewater]="251"  # #f5e0dc
+CATPPUCCIN[flamingo]="21i0"   # #f2cdcd
+CATPPUCCIN[pink]="212"       # #f5c2e7
+CATPPUCCIN[mauve]="183"      # #cba6f7
+CATPPUCCIN[red]="210"        # #f38ba8
+CATPPUCCIN[maroon]="174"     # #eba0ac
+CATPPUCCIN[peach]="216"      # #fab387
+CATPPUCCIN[yellow]="221"     # #f9e2af
+CATPPUCCIN[green]="156"      # #a6e3a1
+CATPPUCCIN[teal]="123"       # #94e2d5
+CATPPUCCIN[sky]="117"        # #89dceb
+CATPPUCCIN[sapphire]="116"   # #74c7ec
+CATPPUCCIN[blue]="111"       # #89b4fa
+CATPPUCCIN[lavender]="183"   # #b4befe
+CATPPUCCIN[text]="255"       # #cdd6f4
+CATPPUCCIN[subtext1]="251"   # #bac2de
+CATPPUCCIN[subtext0]="248"   # #a6adc8
+CATPPUCCIN[overlay2]="245"   # #9399b2
+CATPPUCCIN[surface2]="242"   # #585b70
+CATPPUCCIN[surface1]="239"   # #45475a
+CATPPUCCIN[surface0]="237"   # #313244
+CATPPUCCIN[base]="235"       # #1e1e2e
+CATPPUCCIN[mantle]="234"     # #181825
+CATPPUCCIN[crust]="232"      # #11111b
+
+<key>background #1e1e2e</string>
+          <key>foreground #cdd6f4</string>
+          <key>caret #f5e0dc</string>
+          <key>lineHighlight #313244</string>
+          <key>misspelling #f38ba8</string>
+          <key>accent #cba6f7</string>
+          <key>selection #9399b240</string>
+          <key>activeGuide #45475a</string>
+          <key>findHighlight #3e5767</string>
+          <key>gutterForeground #7f849c</string>
+        </dict>
+
+
+mocha teal
+colourful: true
+
+filekinds:
+  normal: {foreground: "#cdd6f4"}
+  directory: {foreground: "#94e2d5"}
+  symlink: {foreground: "#89b4fa"}
+  pipe: {foreground: "#bac2de"}
+  block_device: {foreground: "#eba0ac"}
+  char_device: {foreground: "#eba0ac"}
+  socket: {foreground: "#bac2de"}
+  special: {foreground: "#cba6f7"}
+  executable: {foreground: "#a6e3a1"}
+  mount_point: {foreground: "#94e2d5"}
+
+perms:
+  user_read: {foreground: "#f38ba8", is_bold: true}
+  user_write: {foreground: "#f9e2af", is_bold: true}
+  user_execute_file: {foreground: "#a6e3a1", is_bold: true}
+  user_execute_other: {foreground: "#a6e3a1", is_bold: true}
+  group_read: {foreground: "#f38ba8"}
+  group_write: {foreground: "#f9e2af"}
+  group_execute: {foreground: "#a6e3a1"}
+  other_read: {foreground: "#f38ba8"}
+  other_write: {foreground: "#f9e2af"}
+  other_execute: {foreground: "#a6e3a1"}
+  special_user_file: {foreground: "#cba6f7"}
+  special_other: {foreground: "#7f849c"}
+  attribute: {foreground: "#9399b2"}
+
+size:
+  major: {foreground: "#a6adc8"}
+  minor: {foreground: "#89dceb"}
+  number_byte: {foreground: "#bac2de"}
+  number_kilo: {foreground: "#a6adc8"}
+  number_mega: {foreground: "#89b4fa"}
+  number_giga: {foreground: "#cba6f7"}
+  number_huge: {foreground: "#cba6f7"}
+  unit_byte: {foreground: "#a6adc8"}
+  unit_kilo: {foreground: "#89dceb"}
+  unit_mega: {foreground: "#cba6f7"}
+  unit_giga: {foreground: "#cba6f7"}
+  unit_huge: {foreground: "#94e2d5"}
+
+users:
+  user_you: {foreground: "#cdd6f4"}
+  user_root: {foreground: "#f38ba8"}
+  user_other: {foreground: "#eba0ac"}
+  group_yours: {foreground: "#a6adc8"}
+  group_other: {foreground: "#9399b2"}
+  group_root: {foreground: "#f38ba8"}
+
+links:
+  normal: {foreground: "#89b4fa"}
+  multi_link_file: {foreground: "#89b4fa"}
+
+git:
+  new: {foreground: "#a6e3a1"}
+  modified: {foreground: "#f9e2af"}
+  deleted: {foreground: "#eba0ac"}
+  renamed: {foreground: "#94e2d5"}
+  typechange: {foreground: "#f5c2e7"}
+  ignored: {foreground: "#7f849c"}
+  conflicted: {foreground: "#fab387"}
+
+git_repo:
+  branch_main: {foreground: "#a6adc8"}
+  branch_other: {foreground: "#cba6f7"}
+  git_clean: {foreground: "#a6e3a1"}
+  git_dirty: {foreground: "#eba0ac"}
+
+security_context:
+  colon: {foreground: "#6c7086"}
+  user: {foreground: "#7f849c"}
+  role: {foreground: "#cba6f7"}
+  typ: {foreground: "#585b70"}
+  range: {foreground: "#cba6f7"}
+
+file_type:
+  image: {foreground: "#f9e2af"}
+  video: {foreground: "#f38ba8"}
+  music: {foreground: "#a6e3a1"}
+  lossless: {foreground: "#94e2d5"}
+  crypto: {foreground: "#7f849c"}
+  document: {foreground: "#cdd6f4"}
+  compressed: {foreground: "#f5c2e7"}
+  temp: {foreground: "#eba0ac"}
+  compiled: {foreground: "#74c7ec"}
+  source: {foreground: "#89b4fa"}
+
+punctuation: {foreground: "#6c7086"}
+date: {foreground: "#f9e2af"}
+inode: {foreground: "#a6adc8"}
+blocks: {foreground: "#6c7086"}
+header: {foreground: "#cdd6f4"}
+octal: {foreground: "#94e2d5"}
+flags: {foreground: "#cba6f7"}
+
+symlink_path: {foreground: "#89dceb"}
+control_char: {foreground: "#74c7ec"}
+broken_symlink: {foreground: "#f38ba8"}
+broken_path_overlay: {foreground: "#585b70"}
+
+
+
+alacritty
+[colors.primary]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+dim_foreground = "#7f849c"
+bright_foreground = "#cdd6f4"
+
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#f5e0dc"
+
+[colors.vi_mode_cursor]
+text = "#1e1e2e"
+cursor = "#b4befe"
+
+[colors.search.matches]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.search.focused_match]
+foreground = "#1e1e2e"
+background = "#a6e3a1"
+
+[colors.footer_bar]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.hints.start]
+foreground = "#1e1e2e"
+background = "#f9e2af"
+
+[colors.hints.end]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.selection]
+text = "#1e1e2e"
+background = "#f5e0dc"
+
+[colors.normal]
+black = "#45475a"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#bac2de"
+
+[colors.bright]
+black = "#585b70"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#a6adc8"
+
+[[colors.indexed_colors]]
+index = 16
+color = "#fab387"
+
+[[colors.indexed_colors]]
+index = 17
+color = "#f5e0dc"
+
+
+zsh
+
+[colors.primary]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+dim_foreground = "#7f849c"
+bright_foreground = "#cdd6f4"
+
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#f5e0dc"
+
+[colors.vi_mode_cursor]
+text = "#1e1e2e"
+cursor = "#b4befe"
+
+[colors.search.matches]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.search.focused_match]
+foreground = "#1e1e2e"
+background = "#a6e3a1"
+
+[colors.footer_bar]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.hints.start]
+foreground = "#1e1e2e"
+background = "#f9e2af"
+
+[colors.hints.end]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.selection]
+text = "#1e1e2e"
+background = "#f5e0dc"
+
+[colors.normal]
+black = "#45475a"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#bac2de"
+
+[colors.bright]
+black = "#585b70"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#a6adc8"
+
+[[colors.indexed_colors]]
+index = 16
+color = "#fab387"
+
+[[colors.indexed_colors]]
+index = 17
+color = "#f5e0dc"
+
+lazygit
+
+  theme:
+    activeBorderColor:
+      - '#94e2d5'
+      - bold
+    inactiveBorderColor:
+      - '#a6adc8'
+    optionsTextColor:
+      - '#89b4fa'
+    selectedLineBgColor:
+      - '#313244'
+    cherryPickedCommitBgColor:
+      - '#45475a'
+    cherryPickedCommitFgColor:
+      - '#94e2d5'
+    unstagedChangesColor:
+      - '#f38ba8'
+    defaultFgColor:
+      - '#cdd6f4'
+    searchingActiveBorderColor:
+      - '#f9e2af'
+
+  authorColors:
+    '*': '#b4befe'
