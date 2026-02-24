@@ -1,0 +1,6 @@
+  plugins/**
+  theme.toml
+  keymap.toml
+  package.toml
+  *.bak
+  flavors/**

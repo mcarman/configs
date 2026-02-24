@@ -1,0 +1,5 @@
+catppuccin-mocha-tmux.conf
+catppuccin-mocha.tmux
+plugins/**
+themes/**
+old-configs/**

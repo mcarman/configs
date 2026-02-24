@@ -19,7 +19,6 @@ alias ipinfo="curl ifconfig.me && curl ifconfig.me/host"
 kernelgraph() { lsmod | perl -e 'print "digraph \"lsmod\" {";<>;while(<>){@_=split/\s+/; print "\"$_[0]\" -> \"$_\"\n" for split/,/,$_[3]}print "}"' | dot -Tpng | display -;}
 alias busy="cat /dev/urandom | hexdump -C | grep \"ca fe\""
 
-
 # aliases to auto open certain extensions for editing
 # alias -s [extension]="preferred-tool"
 alias -s txt=nvim
@@ -33,11 +32,11 @@ alias dust='du -sh * | sort -hr'
 
 # autologon to servers
 alias gopihole='ssh pihole@10.0.0.236'
-alias gopims='ssh pims@10.0.0.234'
+alias gopims='ssh pims@10.0.0.212'
 alias mntpims='sudo sshfs -o allow_other,default_permissions,cache=yes,auto_cache,reconnect,ServerAliveInterval=15'
 
 # mount remote fs
-alias msfs=sudo sshfs -o allow_other,default_permissions pims@10.0.0.190/opt/stacks/mserver $HOME/server/mserver
+alias msfs='sudo sshfs -o allow_other,default_permissions "pims@10.0.0.212/opt/stacks/mserver" "$HOME/project/mserver/remote"'
 
 # +---------+
 # | find-fd |
@@ -47,6 +46,8 @@ alias find="fd -H -i"
 alias fnd="fd -H -i"
 alias fd="fd -H -i"
 
+alias rgf='sh $HOME/scripts/rgff.sh'
+
 
 # +--------+
 # | System |
@@ -54,12 +55,12 @@ alias fd="fd -H -i"
 
 alias shutdown='sudo shutdown now'
 alias restart='sudo reboot'
-alias suspend='sudo pm-suspend'
+# alias suspend='sudo pm-suspend'
 
-alias bigf= 'find / -xdev -type f -size +500M'  # display "big" files > 500M
+# alias bigf= 'find / -xdev -type f -size +500M'  # display "big" files > 500M
 
-## clear screen
-cls() { cd "$1"; ls -la; }
+## Change ito a directory and list files
+cdls() { cd "$1"; ls -la; }
 
 ## alias for update 20241010
 alias agu='sudo apt update && sudo apt upgrade -y'
@@ -89,6 +90,7 @@ alias xclass='xprop | grep WM_CLASS' # display xprop class
 # | Zsh |
 # +-----+
 
+# Open kitty with basic options set
 alias kitty='kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty'
 
 # +----------------+
@@ -118,7 +120,7 @@ alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index} > /dev/null"; unset index # directory stack
 
 # Make directory and change into it
-mcd() {
+mcdir() {
   mkdir -p "$1" && cd "$1"
 }
 
@@ -211,7 +213,7 @@ alias vi='nvim'
 # | Git |
 # +-----+
 
-alias lgit="lazygit"
+alias lg="lazygit"
 alias gs='git status'
 alias gss='git status -s'
 alias ga='git add'
@@ -251,8 +253,11 @@ alias tmuxa='tmux attach -t'
 alias tmuxl='tmux list-sessions'
 alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"
 
+# tmuxinator
+alias mux='tmuxinator'
+
 ## Use  bat for colorization
-alias bat="batcat --color=always --style=numbers --line-range=:500"
+# alias bat="batcat --color=always --style=numbers --line-range=:500"
 alias cat="bat"  # --theme-dark default --theme-light GitHub
 
 # +------+
@@ -264,11 +269,12 @@ alias lynx='lynx -vikeys -accept_all_cookies'
 # +--------+
 # | docker |
 # +--------+
-alias dockls="docker container ls | awk 'NR > 1 {print \$NF}'"                  # display names of running containers
-alias dockRr='docker rm $(docker ps -a -q)'                                     # delete every containers / images
+alias dockls='docker container ls | awk "NR > 1 {print \$NF}"'                  # display names of running container
+alias dockrm='docker rm $(docker ps -a -q)'                                     # delete every containers / images
 alias dockRr='docker rm $(docker ps -a -q) && docker rmi $(docker images -q)'   # delete every containers / images
 alias dockstats='docker stats $(docker ps -q)'                                  # stats on images
-alias dockimg='docker ls images'                                                   # list images installed
+alias dockimg='docker ls images'                                                # list images installed
+alias docklog='docker logs -f'
 alias dockprune='docker system prune -a'                                        # prune everything
 
 # +----------------+
@@ -277,7 +283,7 @@ alias dockprune='docker system prune -a'                                        
 
 alias docker-compose-dev='docker-compose -f docker-compose-dev.yml' # run a different config file than the default one
 alias dockup='docker compose up -d'
-alias dockd='docker compose down'
+alias dockdn='docker compose down'
 alias dockceu='docker-compose run --rm -u $(id -u):$(id -g)'                    # run as the host user
 alias dockce='docker-compose run --rm'
 
@@ -324,7 +330,7 @@ backup() { cd "$1"{,.bak}; }
 md5check() { md5sum "$1" | grep "$2";}
 
 # Generate a random password
-alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
+alias genpasswd='strings /dev/urandom | grep -o "[[:alnum:]]" | head -n 30 | tr -d "\n"; echo'
 
 histg() { history | rg "$1" }
 
@@ -352,11 +358,10 @@ extract() {
         *)     echo "'$1' cannot be extracted via extract()" ;;
          esac
      else
-         echo "'$1' is not a valid file"
+         echo '"$1" is not a valid file'
      fi
 }
 
 # TMUX setup
 alias xclip="xclip >/dev/null"
-
 

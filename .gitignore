@@ -17,6 +17,7 @@
 
 # Zsh sessions
 .zsh_sessions
+.zsh_history
 
 # Zsh zcalc history
 .zcalc_history
@@ -40,41 +41,43 @@ robbyrussell/oh-my-zsh/plugins/per-directory-history plugin's files
 *.xcolors
 *.Xresources
 *.dircolors
-delta/
-
+delta/**
+*.tokyonight
+*.twilight
+*.bak2
+*.bak
+*.bak1
 
 # Ignore syntax files.
 *.tmLanguages
-
+*.tmLanguage
 
 # ignore env
 .env.local
-.env.*.local
-
 # token info in gh
-hosts.yml
+gh/hosts.yml
 
 # ignore telemetry directory and all subdirectories
-**/telemetry/
-
-**/lazygit/themes/
+**/telemetry/**
+**/plugins/**
+**/lazygit/
+lazygit/**
+! lazygit/config.yml
 **/nvim.bak
 **/projects.yazi/
 *.yazi
-*.bak
-*.bak1
 **/fxf-tab/
 **/zsh-autosuggestions/
 **/zsh-autoswitch-virtualenv/
-**/zsh-completions/
-**/zsh-history-substring-search/
-**/zsh-syntax-highlighting/
+**/zsh-completions/**
+**/zsh-history-substring-search/**
+**/zsh-syntax-highlighting/**
 **/zsh-z/
 delta_completions.zsh
-**/prompt/
-**/slimline/
+**/prompt/**
+**/slimline/**
 **/temeraf-zsh/
 **/zsh-modern-theme/
-88/old-configs/
+**/old-configs/
 **/tmux/plugins/
-
+completion.zsh

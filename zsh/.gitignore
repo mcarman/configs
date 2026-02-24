@@ -1,0 +1,10 @@
+.zsh_history
+prompts
+*.bak
+*.bak1
+*.twilight
+*.tokyonight
+.zcompdump
+themes/**
+plugins/**
+
