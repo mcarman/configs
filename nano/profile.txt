@@ -1,0 +1,4 @@
+# powershell CONFIG_MDC
+
+#Alias to open this window
+Set-Alias ll 

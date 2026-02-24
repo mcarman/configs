@@ -9,9 +9,8 @@
     diffFilter = delta --color-only
 
 [delta]
-    features = side-by-side line-numbers decorations catppuccin-mocha
+    features = side-by-side line-numbers decorations catppuccin-nonarchbutterfly
     navigate = true  # use n and N to move between diff sections
-    dark = true      # or light = true, or omit for auto-detection
     hyperlinks = true
     hyperlinks-file-link-format = "http://localhost:8000/open-in-editor?path={path}&line={line}"
 
