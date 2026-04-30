@@ -1,6 +1,7 @@
 # git ignore file for configs
 #
 *.Identifier
+*Zone.Identifier
 # Created by https://www.toptal.com/developers/gitignore/api/zsh
 # Edit at https://www.toptal.com/developers/gitignore?templates=zsh
 
@@ -54,30 +55,40 @@ delta/**
 
 # ignore env
 .env.local
+.env
+.envrc
+
 # token info in gh
 gh/hosts.yml
 
+## nvim has its own repository
+nvim/**
+
 # ignore telemetry directory and all subdirectories
 **/telemetry/**
-**/plugins/**
-**/lazygit/
 lazygit/**
 ! lazygit/config.yml
-**/nvim.bak
 **/projects.yazi/
 *.yazi
-**/fxf-tab/
-**/zsh-autosuggestions/
-**/zsh-autoswitch-virtualenv/
-**/zsh-completions/**
+zsh/plugins/**
+**/zsh-autoswitch-virtualenv/**
 **/zsh-history-substring-search/**
-**/zsh-syntax-highlighting/**
 **/zsh-z/
 delta_completions.zsh
-**/prompt/**
-**/slimline/**
-**/temeraf-zsh/
 **/zsh-modern-theme/
-**/old-configs/
-**/tmux/plugins/
-completion.zsh
+zsh/prompts
+zsh/lib/**
+zsh/modules/**
+zsh/aliases.old
+micro/plug/**
+yazi/flavors/**
+
+
+tmuxifier.tmux
+tmuxinator/**
+
+lnav/formats/defaults/**
+lnav/configs/default/**
+lnav/log_metadata.db
+lnav/view-info-1a6c07126a1fdaafdd6aa83c141a8b4f.ts1775867297.ppid199.json
+

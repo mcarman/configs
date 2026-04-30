@@ -7,4 +7,5 @@ prompts
 .zcompdump
 themes/**
 plugins/**
-
+.chpwd-*
+.chpwd*

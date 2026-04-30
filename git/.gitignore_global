@@ -99,6 +99,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+.iso
 
 # PyInstaller
 #   Usually these files are written by a python script from a template
@@ -376,3 +377,6 @@ luac.out
 *.i*86
 *.x86_64
 *.hex
+
+# Misc
+.Identifier

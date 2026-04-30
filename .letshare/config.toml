@@ -1,0 +1,13 @@
+[personal]
+  username = "nitro"
+
+[share]
+  instance_name = "nitro"
+  stoppable_instance = true
+  zip_files = false
+  compression = false
+  shared_zip_name = "shared.zip"
+
+[receive]
+  download_folder = "/home/carma/Downloads"
+  concurrent_downloads = 5

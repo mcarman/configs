@@ -1,0 +1,7 @@
+formats/**
+**formats/
+log-metadata.*
+
+crash/**
+*.sample
+configs/default/**

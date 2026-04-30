@@ -6,7 +6,7 @@
 ratio          = [ 1, 4, 3 ]
 sort_by        = "alphabetical"
 sort_sensitive = false
-sort_reverse 	 = false
+sort_reverse	 = false
 sort_dir_first = true
 sort_translit  = false
 linemode       = "size_and_mtime"
@@ -207,12 +207,12 @@ shell_offset = [ 0, 2, 50, 3 ]
 
 [confirm]
 # trash
-trash_title 	= "Trash {n} selected file{s}?"
+trash_title	  = "Trash {n} selected file{s}?"
 trash_origin	= "center"
 trash_offset	= [ 0, 0, 70, 20 ]
 
 # delete
-delete_title 	= "Permanently delete {n} selected file{s}?"
+delete_title	= "Permanently delete {n} selected file{s}?"
 delete_origin	= "center"
 delete_offset	= [ 0, 0, 70, 20 ]
 
@@ -234,7 +234,12 @@ open_origin = "hovered"
 open_offset = [ 0, 1, 50, 7 ]
 
 [which]
-sort_by      	 = "none"
+sort_by	       = "none"
 sort_sensitive = false
-sort_reverse 	 = false
+sort_reverse	 = false
 sort_translit  = false
+
+[flavor]
+dark = "catppuccin-mocha"
+light = "catppuccin-latte"
+
