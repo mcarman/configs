@@ -92,3 +92,13 @@ lnav/configs/default/**
 lnav/log_metadata.db
 lnav/view-info-1a6c07126a1fdaafdd6aa83c141a8b4f.ts1775867297.ppid199.json
 
+.asdf/**
+
+.tmuxifier/**
+! .tmuxifier/layouts/
+
+ulauncher/user-themes/**
+
+nvm/**
+! Dockerfile
+

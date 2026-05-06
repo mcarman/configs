@@ -15,9 +15,8 @@ setopt GLOBDOTS
 ## Note: there are bash files in /etc/profile.d/
 # including: nvim, cargo,
 
-# basic local path
-PATH="$PATH:/usr/bin:/usr/share:$HOME/.local/share/bin:$HOME/.local/share:/usr/share/bin/go 
-/bin"
+# basic local paths
+PATH="$PATH:$HOME/.local/share/bin:$XDG_CONFIG_HOME/fvm/bin:/usr/share/zig"
 
 ## path and init for tmuxifier if installed
 #if [[ -d "$HOME/.config/tmuxifier" ]] ; then
@@ -25,21 +24,22 @@ PATH="$PATH:/usr/bin:/usr/share:$HOME/.local/share/bin:$HOME/.local/share:/usr/s
 #  export TMUXIFIER_LAYOUT_PATH="$XDG_CONFIG_HOME/tmuxifier/tmux-layouts"
 #fi
 
+## add rust/cargo to path
+PATH=$PATH:"$HOME/.cargo/bin/bin:$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin"
+
 ## add go path
 PATH=$PATH:/usr/local/go/bin
 
+## add zig path
+PATH="$PATH:/usr/share/zig"
 
-## Remove duplicate PATH entries and export
-[[ ":$PATH:" =~ ":/new-directory:" ]] || PATH="/new-directory:$PATH"
-export PATH
-
-# path and init for atuin if installed
+# init for atuin if installed
 # if [ -d "$HOME/.config/atuin" ] ; then
 #   eval "$(atuin init zsh)"
 # fi
 
-# path and init for zoxide if installed
-# must load AFTER compinit per zoside install
+## init for zoxide if installed
+## must load AFTER compinit per zoside install
 if [[ -d "$XDG_CONFIG_HOME/zoxide" ]] ; then
   eval "$(zoxide init zsh)"
 fi
@@ -52,6 +52,10 @@ eval "$(pyenv init -)"
 set-pyenv() {
   eval "$(pyenv virtualenv-init -)"
 }
+
+## Remove duplicate PATH entries and export
+[[ ":$PATH:" =~ ":/new-directory:" ]] || PATH="/new-directory:$PATH"
+export PATH
 
 # source /home/mdc1/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
@@ -89,9 +93,9 @@ else
   export EDITOR='nvim'
 fi
 
-export TERM='tmux-256color'
-export BROWSER='firefox'
-export VISUAL='nvim'
+export TERM="tmux-256color"
+# export BROWSER="firefox"
+export VISUAL="nvim"
 
 ## Edit the commandline like nvim
 autoload -Uz edit-command-line
@@ -120,9 +124,12 @@ mycol18='#504945'
 mycol19='#2E3440'
 NEWLINE=$'\n'
 
+# left_sep = "\uE0B4"
+# right_sep = "\uE0B6"
+
 PROMPT="${NEWLINE}%K{$mycol19}%F{$mycol11}$(date +%_I:%M%P) %K{$mycol12}%F{$mycol13} %n %K{$mycol14} %~ %f%k ❯ " # nord theme
 
-# PROMPT="${NEWLINE}%K{$mycol15}%F{mycol16} $0 %K{$mycol17}%F{$mycol16} %n %K{$mycol18} %~ %f%k ❯ " # warmer theme
+# PROMPT="${NEWLINE}%K{$mycol15}%F{mycol16} $0 %K{$mycol17}%F{$mycol16} %n %K{$mycol18} %~ %f%k ❯" # warmer theme
 
 # PROMPT="${NEWLINE}%K{$COL0}%F{$COL1}$(date +%_I:%M%P) %K{$COL0}%F{$COL2} %n %K{$COL3} %~ %f%k ❯ " # pywal colors, from postrun script
 #
@@ -150,6 +157,12 @@ fi
 
 ## Source fzf
 [ -f ~/.fzf.zsh ] && source <(fzf --zsh)
+
+# path and init for zoxide if installed
+# must load AFTER compinit per zoside install
+if [[ -d "$XDG_CONFIG_HOME/zoxide" ]] ; then
+  eval "$(zoxide init zsh)"
+fi
 
 autoload -U compinit; compinit
 
@@ -245,6 +258,11 @@ zi() {
   dir=$(zoxide query -l | fzf) && z "$dir"
  }
 
+## set up asdf
+fpath=(${ASDF_DATA_DIR:-$HOME/.config/.asdf}/completions $fpath)
+autoload -Uz compinit && compinit
+
+
 ##+------------------------------- +
 # |  Autosuggestion / Completion  |
 #+-------------------------------+
@@ -282,6 +300,13 @@ alias lD='ls -D'
 alias lc='ls -1'
 alias lt='ls -T'
 alias tree='lt'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
 
 ## Grid views
 alias el='eza --icons --group-directories-first'
@@ -327,3 +352,38 @@ help() {
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Alias for running starkup installer
+alias starkup="curl --proto '=https' --tlsv1.2 -sSf https://sh.starkup.sh | sh -s --"
+
+# BEGIN SCARB COMPLETIONS
+_scarb() {
+  if ! scarb completions zsh >/dev/null 2>&1; then
+    return 0
+  fi
+  eval "$(scarb completions zsh)"
+  _scarb "$@"
+}
+
+compdef _scarb scarb
+# END SCARB COMPLETIONS
+
+# BEGIN FOUNDRY COMPLETIONS
+_snforge() {
+  if ! snforge completions zsh >/dev/null 2>&1; then
+    return 0
+  fi
+  eval "$(snforge completions zsh)"
+  _snforge "$@"
+}
+
+_sncast() {
+  if ! sncast completions zsh >/dev/null 2>&1; then
+    return 0
+  fi
+  eval "$(sncast completions zsh)"
+  _sncast "$@"
+}
+
+compdef _snforge snforge
+compdef _sncast sncast
+# END FOUNDRY COMPLETIONS

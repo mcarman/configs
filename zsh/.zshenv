@@ -1,7 +1,9 @@
 
-## Cargo Directories
-. "$HOME/.cargo/env"
-#!/usr/bin/env bash
+## HOME Directory
+# export HOME=/home/carma
+
+## Source cargo Directories
+. "$HOME/.cargo/bin/env"
 
 # Define XDG base directories
 export XDG_BIN_HOME="$HOME/.local/bin"
@@ -65,9 +67,9 @@ export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
 export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty"
 # export YAZI_CONFIG_DIR= "XDG_CONFIG_HOME/yazi"
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
-
+export ASDF_DATA_DIR="$XDG_CONFIG_HOME/.asdf"
 # set system paths
-PATH="$PATH:/usr/bin:/usr/share:/usr/local/:$HOME/.local/bin:$HOME/.local/share/cargo/bin:$XDG_CONFIG_HOME/scripts"
+export PATH="$PATH:/usr/bin:/usr/share:/usr/local/:$HOME/.local/bin:$HOME/.local/share/cargo/bin:$XDG_CONFIG_HOME/scripts:$XDG_BIN_HOME/go"
 typeset -U path
 export PATH
 
@@ -84,3 +86,6 @@ skip_global_compinit=1
 # export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 # export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 
+
+export PATH="$PATH:/home/carma/.local/bin"
+. "/home/carma/.cargo/bin/env"

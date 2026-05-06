@@ -48,4 +48,20 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-theme = "Catppuccin Mocha"
+font-family = "Fira Code Mono"
+font-style-bold = default
+font-style-italic = default
+font-style-bold-italic = default
+font-size = 14
+font-feature = "liga"
+
+
+dark = "Catppuccin Mocha"
+
+# use graphics card to accelerate render-acceleration
+render-acceleration = opengl
+window-decoration = true
+
+
+
+

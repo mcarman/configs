@@ -1,0 +1,6 @@
+## ulauncher gitignore
+
+graphite-light/**
+graphite-dark/**
+ulauncher-graphite/**
+
