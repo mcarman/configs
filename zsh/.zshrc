@@ -10,7 +10,18 @@ setopt GLOBDOTS
 #  | Local Paths |
 ## +-------------+
 
+function notify-send() {
+    #Detect the name of the display in use
+    local display=":$(ls /tmp/.X11-unix/* | sed 's#/tmp/.X11-unix/X##' | head -n 1)"
 
+    #Detect the user using such display
+    local user=$(who | grep '('$display')' | awk '{print $1}' | head -n 1)
+
+    #Detect the id of the user
+    local uid=$(id -u $user)
+
+    sudo -u $user DISPLAY=$display DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$uid/bus notify-send "$@"
+}
 
 ## Note: there are bash files in /etc/profile.d/
 # including: nvim, cargo,
@@ -38,20 +49,14 @@ PATH="$PATH:/usr/share/zig"
 #   eval "$(atuin init zsh)"
 # fi
 
-## init for zoxide if installed
-## must load AFTER compinit per zoside install
-if [[ -d "$XDG_CONFIG_HOME/zoxide" ]] ; then
-  eval "$(zoxide init zsh)"
-fi
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
 
 ## Call pyenv
-set-pyenv() {
-  eval "$(pyenv virtualenv-init -)"
-}
+#set-pyenv() {
+#  eval "$(pyenv virtualenv-init -)"
+#}
 
 ## Remove duplicate PATH entries and export
 [[ ":$PATH:" =~ ":/new-directory:" ]] || PATH="/new-directory:$PATH"
@@ -66,7 +71,7 @@ export PATH
 ## History Settings
 
 ## Size of the history file
-export SAVEHIST=2000
+export SAVEHIST=5000
 
 ## size of the save file
 export HISTSIZE=10000
@@ -112,6 +117,8 @@ eval "$(direnv hook zsh)"
 #  | Prompt |
 #  +--------+
 
+# [](bg:#769ff0 fg:#a3aed2)\
+
 ## Define Colors
 mycol11='#E5E9F0'
 mycol12='#3b4252'
@@ -123,19 +130,39 @@ mycol17='#3c3836'
 mycol18='#504945'
 mycol19='#2E3440'
 NEWLINE=$'\n'
+C1='#E5E9F0' #
+C2='#3b4252' #
+C4='#4c566a' #
+C5='#32302f' #
+C6='#d5c4a1' #
+C7='#3c3836' #
+C8='#504945' #
+C9='#2E3440' #
+
+
 
 # left_sep = "\uE0B4"
-# right_sep = "\uE0B6"
+# right_sep = "\
+# rt_rnd= %F{$mycol13}%K{$mycol14}%f%k
+# echo $rt_rnd
 
-PROMPT="${NEWLINE}%K{$mycol19}%F{$mycol11}$(date +%_I:%M%P) %K{$mycol12}%F{$mycol13} %n %K{$mycol14} %~ %f%k ❯ " # nord theme
+## nord-ish theme
+PROMPT="${NEWLINE}%K{$mycol19}%F{$mycol11}$(date +%_I:%M%P) %K{$mycol12}%F{$mycol13} %n %k%F{$mycol19}%f"
 
-# PROMPT="${NEWLINE}%K{$mycol15}%F{mycol16} $0 %K{$mycol17}%F{$mycol16} %n %K{$mycol18} %~ %f%k ❯" # warmer theme
+## warm theme
+# PROMPT="${NEWLINE}%K{$mycol15}%F{$mycol16} $0 %K{$mycol17}%F{$mycol16} %n %F{$mycol18}%k %f"
 
-# PROMPT="${NEWLINE}%K{$COL0}%F{$COL1}$(date +%_I:%M%P) %K{$COL0}%F{$COL2} %n %K{$COL3} %~ %f%k ❯ " # pywal colors, from postrun script
-#
-echo -e "${NEWLINE}\033[48;2;46;52;64;38;2;216;222;233m $0 \033[0m\033[48;2;59;66;82;38;2;216;222;233m $(uptime -p | cut -c 4-) \033[0m\033[48;2;76;86;106;38;2;216;222;233m $(uname -r) \033[0m" # nord theme
+## pywal colors
+# PROMPT="${NEWLINE}%K{$COL0}%F{$COL1}$(date +%_I:%M%P) %K{$COL0}%F{$COL2} %n %K{$COL3} %~%%f%k "
 
-# echo -e "${NEWLINE}\x1b[38;5;137m\x1b[48;5;0m it's$(date +%_I:%M%P) \x1b[38;5;180m\x1b[48;5;0m $(uptime -p | cut -c 4-) \x1b[38;5;223m\x1b[48;5;0m $(uname -r) \033[0m " # warmer theme
+## one time print with nord-ish theme
+echo -e "${NEWLINE}\033[48;2;46;52;64;38;2;216;222;233m $0 \033[0m\033[48;2;59;66;82;38;2;216;222;233m $(uptime -p | cut -c 4-) \033[0m\033[48;2;52;64;233;38;2;216;222;233m $(uname -r) \033[0m"
+
+# echo -e "\[\e[91m\]\u\[\e[38;5;208m\]@\[\e[92m\]\h:\[\e[96m\]\$PWD\[\e[35m\]//$(date +"%D-%H:%M" | sed 's/\//-/g')\n\[\e[38;5;21m\][$]~> \[\e[0m\] " 
+
+# echo '\[\e[0m\]\[\e[48;5;236m\]\[\e[38;5;105m\]\u\[\e[38;5;105m\]@\[\e[38;5;105m\]\h\[\e[38;5;105m\] \[\e[38;5;221m\]\w\[\e[38;5;221m\]\[\e[38;5;105m\]\[\e[0m\]\[\e[38;5;236m\]\342\226\214\342\226\214\342\226\214\[\e[0m\]'
+
+echo -e "${NEWLINE}\x1b[38;5;137m\x1b[48;5;0m it is $(date +%_I:%M%P) \x1b[38;5;180m\x1b[48;5;0m up: $(uptime -p | cut -c 4-) \x1b[38;5;223m\x1b[48;5;0m $(uname -o) $(uname -r) \033[0m " # warmer theme
 
 # PROMPT_COMMAND="PS1_CMD1=$(__git_ps1  (%s))"; PS1="\[\e]0; \t\n\u@\H:\w${PS1_CMD1} > " # other prompt with git
 
@@ -158,13 +185,13 @@ fi
 ## Source fzf
 [ -f ~/.fzf.zsh ] && source <(fzf --zsh)
 
+autoload -U compinit; compinit
+
 # path and init for zoxide if installed
 # must load AFTER compinit per zoside install
 if [[ -d "$XDG_CONFIG_HOME/zoxide" ]] ; then
   eval "$(zoxide init zsh)"
 fi
-
-autoload -U compinit; compinit
 
 ## Fuzzy finder, load before autosuggestion and syntax highlighting
 source "$HOME/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
@@ -288,7 +315,7 @@ if [ ! -s "$HOME/.config/zsh/aliases/aliases.zsh" ]; then
 fi
 
 ## mnt fs over sshfs
-alias msfs='sudo sshfs -o allow_other,default_permissions pims@10.0.0.212:/opt/stacks/mserver $HOME/projects/pims'
+alias msfs='sudo sshfs -o allow_other,default_permissions pims@10.0.0.238:/opt/stacks/mserver /mnt/mserver/pims'
 
 ## alias for update 20241010
 alias udatey='sudo aptitude update && sudo aptitude upgrade -y'
@@ -309,7 +336,7 @@ alias ......='cd ../../../../..'
 
 
 ## Grid views
-alias el='eza --icons --group-directories-first'
+alias els='eza --icons --group-directories-first'
 alias ela='eza -a --icons --group-directories-first'
 
 ## Minimal list views (size, relative date, name)
@@ -325,8 +352,8 @@ function elg  { eza -l --icons --git --group-directories-first --no-permissions 
 function elga { eza -la --icons --git --group-directories-first --no-permissions --no-user --time-style=relative $args }
 
 ## Tree views
-function t  { eza --tree -L 2 --icons --group-directories-first $args }
-function tt { eza --tree -L 4 --icons --group-directories-first $args }
+function tv  { eza --tree -L 2 --icons --group-directories-first $args }
+function ttv { eza --tree -L 4 --icons --group-directories-first $args }
 
 ## Filters
 function eld { eza --icons --group-directories-first --only-dirs $args }
@@ -387,3 +414,11 @@ _sncast() {
 compdef _snforge snforge
 compdef _sncast sncast
 # END FOUNDRY COMPLETIONS
+
+# pnpm
+export PNPM_HOME="/home/carma/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end

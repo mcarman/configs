@@ -10,7 +10,6 @@ export XDG_BIN_HOME="$HOME/.local/bin"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_RUNTIME_DIR="$HOME/.local/run"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 create_xdg_basedirs() {
@@ -26,7 +25,6 @@ create_xdg_basedirs() {
     "XDG_CACHE_HOME=$XDG_CACHE_HOME" \
     "XDG_CONFIG_HOME=$XDG_CONFIG_HOME" \
     "XDG_DATA_HOME=$XDG_DATA_HOME" \
-    "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
     "XDG_STATE_HOME=$XDG_STATE_HOME"; do
 
     var="${entry%%=*}"
@@ -68,6 +66,8 @@ export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty"
 # export YAZI_CONFIG_DIR= "XDG_CONFIG_HOME/yazi"
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
 export ASDF_DATA_DIR="$XDG_CONFIG_HOME/.asdf"
+export TMUXP_CONFIGDIR="$XDG_CONFIG_HOME/tmuxp
+
 # set system paths
 export PATH="$PATH:/usr/bin:/usr/share:/usr/local/:$HOME/.local/bin:$HOME/.local/share/cargo/bin:$XDG_CONFIG_HOME/scripts:$XDG_BIN_HOME/go"
 typeset -U path
